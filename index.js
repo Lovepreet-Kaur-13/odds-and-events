@@ -7,6 +7,11 @@ function addNumber(n) {
   render();
 }
 
+function addRandomNumber() {
+  const number = Math.floor(Math.random() * 100);
+  addNumber(number);
+}
+
 function sort() {
   const number = bank.shift();
   if (number % 2 == 0) {
@@ -54,6 +59,7 @@ function InputForm() {
     <button type="submit" name="action" value="add">Add number</button>
     <button type="submit" name="action" value="sortOne">Sort 1</button>
     <button type="submit" name="action" value ="sortAll">Sort All</button>
+    <button type="submit" name="action" value="randomNumber">Add Random Number</button>
     `;
   $form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -68,6 +74,8 @@ function InputForm() {
       sortOne();
     } else if (action === "sortAll") {
       sortAll();
+    } else if (action === "randomNumber") {
+      addRandomNumber();
     }
   });
   return $form;
