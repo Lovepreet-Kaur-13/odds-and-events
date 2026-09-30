@@ -3,7 +3,12 @@ const odds = [];
 const evens = [];
 
 function addNumber(n) {
-  bank.push(n);
+  if (bank.includes(n)) {
+    alert("number is already exist in the bank");
+  } else {
+    bank.push(n);
+  }
+  ascendingOrder(bank);
   render();
 }
 
@@ -12,12 +17,18 @@ function addRandomNumber() {
   addNumber(number);
 }
 
+function ascendingOrder(array) {
+  array.sort((a, b) => a - b);
+}
+
 function sort() {
   const number = bank.shift();
   if (number % 2 == 0) {
     evens.push(number);
+    ascendingOrder(evens);
   } else {
     odds.push(number);
+    ascendingOrder(odds);
   }
 }
 
